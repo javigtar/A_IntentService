@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView"
-        android:layout_marginTop="100dp"
+        android:id="@+id/tvMensaje"
+        android:layout_marginTop="60dp"
         android:layout_gravity="center_horizontal"
         android:text="Subida de archivo" />
 
@@ -46,4 +46,14 @@
         android:id="@+id/bSubirArchivo"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="287dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:indeterminate="false" />
+
 </LinearLayout>
