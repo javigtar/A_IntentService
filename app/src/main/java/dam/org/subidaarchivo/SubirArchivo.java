@@ -29,13 +29,15 @@ public class SubirArchivo extends IntentService {
             Intent progreso = new Intent();
             progreso.setAction(ACTION_PROGRESO);
             progreso.putExtra("progreso", i * 10);
-            //Cada vez que se repita el bucle enviará un mensaje de broadcast con el intent
-            //indicando que esta en proceso
+            //Cada vez que se repita el bucle enviará un mensaje broadcast con el intent creado
+            //indicando que está en proceso la tarea
             sendBroadcast(progreso);
         }
 
         Intent fin = new Intent();
         fin.setAction(ACTION_FIN);
+        //Cuando acabe la tarea mandará un mensaje broadcast con el intent creado indicando
+        //que ha finalizado la tarea
         sendBroadcast(fin);
 
     }

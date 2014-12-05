@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         barraProgreso = (ProgressBar)findViewById(R.id.progressBar);
         barraProgreso.setMax(100);
 
-        //Mensaque me muestra en pantalla e indicará cuando la subida ha finalziado
+        //Mensaje que se muestra en pantalla e indicará cuando la subida ha finalziado
         mensaje = (TextView)findViewById(R.id.tvMensaje);
 
         subirArchivo = (Button)findViewById(R.id.bSubirArchivo);
@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent msgSubirArchivo = new Intent(MainActivity.this, SubirArchivo.class);
+                //Inicia el servicio donde se ejecutará la tarea
                 startService(msgSubirArchivo);
             }
         });
@@ -46,6 +47,8 @@ public class MainActivity extends Activity {
         IntentFilter filter = new IntentFilter();
         filter.addAction(SubirArchivo.ACTION_PROGRESO);
         filter.addAction(SubirArchivo.ACTION_FIN);
+        //Instanciamos la clase ProgresoDeSubida de tipo BroadcastReceiver
+        //que se encargará de gestionar los mensajes de broadcast que se produzcan
         progreso = new ProgresoDeSubida();
         //Registramos el BroadcastReceiver a nuestra aplicación y lo asociamos a los mensajes del progreso
         registerReceiver(progreso, filter);
@@ -77,7 +80,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        //Cuando salgamos de la aplicacion quitará el registro de nuestra aplicación de nuestro
+        //Cuando salgamos de la aplicacion quitará el registro de nuestra aplicación a nuestro
         //BroadcastReceiver para que no se quede en memoria
         unregisterReceiver(progreso);
     }
