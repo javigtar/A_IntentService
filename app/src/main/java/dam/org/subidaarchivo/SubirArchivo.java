@@ -9,14 +9,15 @@ import android.os.SystemClock;
  */
 public class SubirArchivo extends IntentService {
 
+    //Mensajes que producirá la clase para tratarlos con un BroadcastReceiver
     public static final String ACTION_PROGRESO = "PROGRESO";
     public static final String ACTION_FIN = "FIN";
-
 
     public SubirArchivo() {
         super("SubirArchivo");
     }
 
+    //Código que ejecutará la tarea en segundo plano
     @Override
     protected void onHandleIntent(Intent intent) {
 
@@ -28,6 +29,8 @@ public class SubirArchivo extends IntentService {
             Intent progreso = new Intent();
             progreso.setAction(ACTION_PROGRESO);
             progreso.putExtra("progreso", i * 10);
+            //Cada vez que se repita el bucle enviará un mensaje de broadcast con el intent
+            //indicando que esta en proceso
             sendBroadcast(progreso);
         }
 
